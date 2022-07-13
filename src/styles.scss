@@ -1,0 +1,413 @@
+$font-family: Helvetica, sans-serif;
+$primary-color: #323232;
+$box-background: white;
+$text-color: white;
+$image-backgound: #f2f2f2;
+$entry-number-color: #919191;
+$pokemon-name-color: #313131;
+$header-background-color: #f5f5f5;
+$nav-background-color: white;
+$nav-font-color: #898989;
+$home-color: #919191;
+$pokedex-color: #e3350d;
+$video_games-color: #ee6b2f;
+$dark-gray: #313131;
+
+body {
+  font-family: $font-family;
+  color: $text-color;
+  background: $primary-color;
+  background-image: url('https://assets.pokemon.com/static2/_ui/img/chrome/body_bg.png');
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+}
+
+.favButton {
+  width: 20px;
+  height: 20px;
+  border: 2px solid black;
+}
+
+.favButton-off {
+  background-color: #555;
+}
+
+.favButton-on {
+  background-color: rgb(220, 233, 42);
+
+}
+
+header {
+  width: 100%;
+  // height: 80px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 40px;
+  background-color: $header-background-color;
+
+  .logo {
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-color: white;
+    height: 60px;
+    // width: 100px;
+    padding: 2px 4px;
+  }
+
+  .shop {
+    height: 60px;
+    padding: 2px 4px;
+
+    display: flex;
+    align-items: center;
+    justify-items: center;
+    background-color: white;
+
+  }
+
+  >div {
+    background-color: #f2f2f2;
+    color: black
+  }
+}
+
+nav {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  box-sizing: initial;
+  background-color: $nav-background-color;
+  margin-bottom: 20px;
+
+  >div {
+    box-sizing: content-box;
+    height: 80px;
+    width: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.3s;
+
+    color: green;
+
+    cursor: pointer;
+    color: $nav-font-color;
+
+    &:hover {
+      color: $nav-background-color;
+    }
+  }
+
+  >div:first-of-type {
+    border-radius: 0px 0px 0px 8px;
+
+  }
+
+  >div:last-of-type {
+    border-radius: 0px 0px 8px 0px;
+
+  }
+
+  .home {
+    // box-shadow: 0px 6px 0px 0px $home-color;
+    border-bottom: 8px solid $home-color ;
+
+    &:hover {
+      background-color: $home-color;
+    }
+  }
+
+  .pokedex {
+
+    border-bottom: 8px solid $pokedex-color ;
+
+    &:hover {
+      background-color: $pokedex-color;
+    }
+  }
+
+  .video_games {
+    border-bottom: 8px solid $video_games-color;
+
+    &:hover {
+      background-color: $video_games-color;
+    }
+  }
+
+
+}
+
+.searchBarDiv {
+  height: max-content;
+  width: 100%;
+  padding: 10px 0;
+
+  display: flex;
+  flex-direction: row;
+  // justify-items: center;
+  justify-content: center;
+  gap: 15px;
+  background-color: white;
+  color: #313131;
+
+  .searchBarText {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    input {
+      width: 80%;
+      height: 30px;
+      font-size: 20px;
+    }
+  }
+}
+
+.typesContainer {
+  display: flex;
+  flex-direction: row;
+
+  .typeDiv {
+    height: 60px;
+    width: 100px;
+    margin: 10px 15px;
+    display: flex;
+    border: 2px solid black;
+    padding: auto;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+
+    >span {
+      align-self: center;
+      font-size: 20px;
+    }
+  }
+
+  .normal {
+    background-color: #a8a878;
+  }
+
+  .fighting {
+    background-color: #c03028;
+  }
+
+  .flying {
+    background-color: #a890f0;
+  }
+
+  .poison {
+    background-color: #a040a0;
+  }
+
+  .ground {
+    background-color: #e0c068;
+  }
+
+  .rock {
+    background-color: #b8a038;
+  }
+
+  .bug {
+    background-color: #a8b820;
+  }
+
+  .ghost {
+    background-color: #705898;
+  }
+
+  .steel {
+    background-color: #b8b8d0;
+  }
+
+  .fire {
+    background-color: #f08030;
+  }
+
+  .water {
+    background-color: #6890f0;
+  }
+
+  .grass {
+    background-color: #78c850;
+  }
+
+  .electric {
+    background-color: #f8d030;
+  }
+
+  .psychic {
+    background-color: #f85888;
+  }
+
+  .ice {
+    background-color: #98d8d8;
+  }
+
+  .dragon {
+    background-color: #7038f8;
+  }
+
+  .dark {
+    background-color: #705848;
+  }
+
+  .fairy {
+    background-color: #ee99ac;
+  }
+
+}
+
+//
+
+
+//
+
+.pokemonImageDiv {
+  width: 200px;
+  height: 200px;
+  border: 2px solid white;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  animation: animatedBackground 9s infinite linear;
+  background-color: $image-backgound;
+
+  @keyframes animatedBackground {
+    0% {
+      background-position: 0 0;
+    }
+
+    100% {
+      background-position: 100% 0;
+    }
+  }
+}
+
+.pokemonStatDiv {
+  min-height: 280px;
+  width: max-content;
+  margin-top: 20px;
+  margin-left: 20px;
+  background-color: #555;
+  border: 3px solid white;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  padding: 20px 10px 0;
+  gap: 10px;
+  color: black;
+
+  div {
+    width: 150px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    font-size: 20px;
+
+    // background-color: rgb(218, 175, 19);
+    span {
+      text-align: center;
+    }
+  }
+}
+
+//search page
+.pokemonContainer {
+  width: 70%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  background-color: white;
+  padding: 25px;
+  border-radius: 6px;
+  background-image: url('https://assets.pokemon.com/static2/_ui/img/chrome/container_bg.png');
+  background-size: contain;
+
+  .pokemonBox {
+    background-color: $box-background;
+    color: black;
+    cursor: pointer;
+    padding: 20px 10px 10px 10px;
+    transition: 0.2s;
+
+    &:hover {
+      transform: translate(0, -10px);
+    }
+
+    .entryDiv {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 10px;
+
+      .favButton {
+        width: 20px;
+        height: 20px;
+        border: 2px solid black;
+      }
+
+      .favButton-off {
+        background-color: #555;
+      }
+
+      .favButton-on {
+        background-color: rgb(220, 233, 42);
+
+      }
+    }
+
+    h3 {
+      color: $entry-number-color;
+    }
+
+    h2 {
+      color: $pokemon-name-color;
+      margin-top: 10px;
+    }
+
+    .pokemonImageDiv {
+      width: 200px;
+      height: 200px;
+      border: 2px solid white;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: cover;
+      animation: animatedBackground 9s infinite linear;
+      background-color: $image-backgound;
+      border-radius: 6px;
+
+      @keyframes animatedBackground {
+        0% {
+          background-position: 0 0;
+        }
+
+        100% {
+          background-position: 100% 0;
+        }
+      }
+    }
+
+    .typesContainer {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+      .typeDiv {
+        margin: 5px 0;
+        padding: 0% 5px;
+        width: 60px;
+        height: 40px;
+      }
+    }
+
+  }
+}
