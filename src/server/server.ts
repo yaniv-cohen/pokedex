@@ -12,7 +12,7 @@ const root: string = path.join(process.cwd(), 'dist');
 app.use(express.static(root));
 
 const client = new Client({
-  connectionString: "postgres://gkaoyfejproxhy:0dcd62e62be969e6f01390e6be47f95166d4229ff8598f39a8412a999e74d70e@ec2-52-204-157-26.compute-1.amazonaws.com:5432/d5unf3bh4crl3",
+  connectionString: "postgres://hpdllyrhiontnd:b1167bc4d48d6b9ad649814f1dbbbfd572450cedb7ad7733070ce9e05e64c973@ec2-54-161-255-125.compute-1.amazonaws.com:5432/d6nt3n691ktte2",
   ssl: {
     rejectUnauthorized: false
   }
@@ -26,7 +26,7 @@ app.listen(port, () => {
 });
 
 app.get('/get', (_request: any, response: any) => {
-  client.query('SELECT * FROM pokemoAndFuisionsEntries', (err: Error, res: any) => {
+  client.query('SELECT * FROM pokemonAndFusionsData', (err: Error, res: any) => {
     if (err) throw err;
     response.status(200).json(res.rows);
   });

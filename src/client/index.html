@@ -10,7 +10,19 @@
   <script src="app.js"></script>
 </head>
 <body>
-  <h1></h1>
+  <header>
+    <h1>My pokemon page</h1>
+
+  </header>
+  <nav>
+    <div class="searchbarWrapper">
+      <input type="text" id ="searchInput">
+      <button id ="searchButton">Go!</button>
+    </div>
+  </nav>
+  <main id ="pokemonMain">
+    <div class="pokemonContainer">pokemon container</div>
+  </main>
   <div class="alert">
     <input id="msg" type="text" value="Hey Wakka">
     <button onclick="app.module.shout()">Say</button>

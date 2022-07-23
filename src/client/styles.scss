@@ -3,54 +3,36 @@ $primary-color: white;
 $text-color: #79589f;
 
 body {
-  font-family: $font-famaly;
-  color: $text-color;
-  background: $primary-color;
-  >.alert {
-    >input {
-      outline: none;
-    }
-  }
-  >.select {
-    margin-top: 10px;
-    >select {
-      outline: none;
-    }
-  }
-  #display {
-    height: 200px;
-    font-size: 60px;
+  background-color: yellow;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  header {
     display: flex;
-    justify-content: center;
+    flex-direction: row;
     align-items: center;
   }
-  #dialog {
-    display: none;
-    position: fixed;
-    width: 100vw;
-    height: 100vh;
-    background: rgba(0,0,0,.3);
-    top: 0;
-    left: 0;
-    justify-content: center;
+
+  nav {
+    background-color: grey;
+    color: white;
+
+    display: flex;
+    flex-direction: row;
     align-items: center;
-    >.card {
-      width: 300px;
-      padding: 15px;
-      border-radius: 7px;
-      background: white;
-      color: #222;
-      display: flex;
-      align-items: center;
-      flex-direction: column;
-      #message {
-        display: flex;
-        justify-content: center;
-        margin-bottom: 10px;
-      }
-      button {
-        width: 100px;
-      }
+    justify-content: center;
+
+  }
+
+  main {
+    background-color: rgba(255, 255, 255, 0.794);
+    width: 100%;
+    .pokemonBox {
+      background-color: white;
+      width: 400px;
+
     }
   }
+
 }

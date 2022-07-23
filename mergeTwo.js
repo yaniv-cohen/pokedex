@@ -7,7 +7,7 @@ function getMerged(p1, p2) {
     newEntry.stats = p1.stats;
     for (const key in  p2.stats) {
         if (Object.hasOwnProperty.call( p2.stats, key)) {
-        newEntry.stats[key] = Math.ceil(0.5 * (p1.stats[key] + p2.stats[key]));
+        newEntry.stats[key] =""+  (Math.ceil(0.5 * (p1.stats[key] + p2.stats[key])));
 
             
         }
@@ -55,7 +55,8 @@ function mergeAndAdd() {
                     if (Object.hasOwnProperty.call(newEntry, key)) {
                         if(key == "stats")
                         {
-                            sql += JSON.stringify(newEntry[key])+',';
+                            
+                            sql +="'"+ JSON.stringify(newEntry[key])+"',";
                     }
                     else if(key == "types")
                     {
@@ -67,7 +68,7 @@ function mergeAndAdd() {
                         sql += "}',"
                 }
                        else if(key == "name" |key == "id"| key == "default_image"  ){
-                        sql += '"'+newEntry[key]+'",';
+                        sql += "'"+newEntry[key].replace(/'/g, "-")+"',";
                        } 
                        else 
                        {
@@ -95,7 +96,7 @@ function mergeAndAdd() {
             weight Numeric ,
             default_image Text 
           );
-          INSERT INTO pokemon_entries(name, id, stats, types, height, weight ,default_image) 
+          INSERT INTO pokemonAndFusionsData(name, id, stats, types, height, weight ,default_image) 
           VALUES ` +sql + ';';
         fs.writeFileSync('pokemonSQLValues.json', outputSQL);
     });

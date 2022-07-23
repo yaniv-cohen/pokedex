@@ -35,7 +35,7 @@ async function readPokemonsJSON()
         let statsObject ={};
 
         for(stat in recieved.stats) {
-        statsObject[recieved.stats[stat].stat.name] = recieved.stats[stat].base_stat   ;
+        statsObject[recieved.stats[stat].stat.name] = recieved.stats[stat].base_stat+""   ;
         }
         let typesArr =[recieved.types[0].type.name];
         if(recieved.types.length>1)
