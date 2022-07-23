@@ -5,9 +5,12 @@ function getMerged(p1, p2) {
     newEntry.id = p1.id + "." + p2.id;;
     let url = p1.url
     newEntry.stats = p1.stats;
-    for (let index = 0; index < p1.stats.length; index++) {
-        let key = Object.keys(p1.stats)[index];
-        newEntry.stats[index][Object.keys(p1.stats[index])[0]] = Math.ceil(0.5 * (p1.stats[key] + p2.stats[key]));
+    for (const key in  p2.stats) {
+        if (Object.hasOwnProperty.call( p2.stats, key)) {
+        newEntry.stats[key] = Math.ceil(0.5 * (p1.stats[key] + p2.stats[key]));
+
+            
+        }
     }
     let typesArray = []
     if (p1.types[0] != p2.types[0]) {
@@ -32,24 +35,69 @@ function getMerged(p1, p2) {
 const fs = require('fs');
 let outputJSON = mergeAndAdd();
 function mergeAndAdd() {
-
+    let sql ="";
     fs.readFile('entryInfo.json', (err, data) => {
         if (err) throw err;
         let entries = JSON.parse(data);
         let original_length = entries.length;
         // original_length
-        for (let a = 0; a < 160 && entries.length<9000; a++) {
+        for (let a = 0; a < 20 && entries.length<9000; a++) {
             const p1 = entries[a];
-            for (let b = 0; b < 160; b++) {
+            for (let b = 3; b < 20; b++) {
                 if (a == b) {
                     continue;
                 }
                 const p2 = entries[b];
-                entries.push(getMerged(p1,p2))
+                sql +="(";
+                let newEntry = getMerged(p1,p2);
+                // console.log( newEntry );
+                for (const key in newEntry) {
+                    if (Object.hasOwnProperty.call(newEntry, key)) {
+                        if(key == "stats")
+                        {
+                            sql += JSON.stringify(newEntry[key])+',';
+                    }
+                    else if(key == "types")
+                    {
+                        sql +="'{"+ newEntry[key][0]
+                        if(newEntry[key][0])
+                        {
+                            sql += ","+ newEntry[key][1];
+                        }
+                        sql += "}',"
+                }
+                       else if(key == "name" |key == "id"| key == "default_image"  ){
+                        sql += '"'+newEntry[key]+'",';
+                       } 
+                       else 
+                       {
+                        sql += ''+newEntry[key]+',';
+                       }
+                        
+                    }
+                }
+                sql = sql.slice(0,-1)
+
+                sql +="),"
+
+                entries.push(newEntry);
                 // console.log(getMerged(p1, p2));
             }
         }
-        fs.writeFileSync('pokemonAndFusionEntries.json', JSON.stringify(entries));
+        // console.log(sql);
+        sql = sql.slice(0,-1)
+        let outputSQL = `CREATE TABLE pokemonAndFusionsData (
+            name TEXT,
+            id TEXT PRIMARY KEY,
+            stats JSON,
+            types TEXT[] ,
+            height Numeric  ,
+            weight Numeric ,
+            default_image Text 
+          );
+          INSERT INTO pokemon_entries(name, id, stats, types, height, weight ,default_image) 
+          VALUES ` +sql + ';';
+        fs.writeFileSync('pokemonSQLValues.json', outputSQL);
     });
 
 }
